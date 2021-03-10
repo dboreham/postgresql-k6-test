@@ -49,6 +49,7 @@ CREATE INDEX if not exists testable2_field2_index
     console.log('Using existing table content');
   } else 
   {
+    console.log('Inserting test data, this may take some time...');
     // otherwise, delete rows and insert new ones
 
     // Delete any existing content
