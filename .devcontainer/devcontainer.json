@@ -1,0 +1,10 @@
+{
+  "name": "play-scala-test",
+  "dockerComposeFile": "./docker-compose.yml",
+  "service": "scala",
+  "workspaceFolder": "/workspace",
+	"extensions": [
+		"scalameta.metals",
+		"scala-lang.scala"
+	]
+}

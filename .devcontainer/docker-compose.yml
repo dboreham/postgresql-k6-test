@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.postgresql
+    
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity
+
+    volumes:
+      - ..:/workspace:cached
+
+    ports:
+            - 55432:5432
+
+  client:
+    build:
+      context: https://github.com/dboreham/xk6-sql-container.git#main
+      dockerfile: Dockerfile.xk6
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity
+
+    volumes:
+      - ..:/workspace:cached
