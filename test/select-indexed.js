@@ -4,7 +4,7 @@ import { words } from './lib/lorem-ipsum.js';
 
 const db = sql.open("postgres", "postgresql://testuser:secret@server:5432/testdb?sslmode=disable");
 
-const rowCount = 1000;
+const rowCount = 100000;
 
 const wordArray = words();
 const wordCount = 10;
