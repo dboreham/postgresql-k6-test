@@ -37,9 +37,7 @@ export function setup() {
 
   db.exec(`
 CREATE INDEX if not exists testable2_field2_index
-    ON public.testtable USING btree
-    (field2 ASC NULLS LAST)
-    TABLESPACE pg_default;
+    ON testtable2(field2)
 `);
 
   // Check if the current row count is what we exect 
@@ -79,5 +77,9 @@ export default function () {
   var lookupKey = randomIntBetween(0,rowCount - 1);
   var statement = `select * from testtable2 where field2 = '${lookupKey}'`;
   //console.log(statement);
-  sql.query(db,statement);
+  var result = sql.query(db,statement);
+  // Sanity check the result
+  if (result.length !== 1) {
+    console.log(`Possible error, query returned: ${JSON.stringify(result)}`);
+  }
 }
